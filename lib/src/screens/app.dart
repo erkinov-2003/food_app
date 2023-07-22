@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:foodapp/src/screens/profile_screen/profile_screen.dart';
 import 'main_screen/splashPage.dart';
 
 class MyApp extends StatelessWidget {
@@ -9,7 +10,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(useMaterial3: true),
       debugShowCheckedModeBanner: false,
-      home: const SplashPage(),
+      home: const ProfileScreen(),
     );
   }
 }
