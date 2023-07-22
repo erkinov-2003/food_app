@@ -1,74 +1,59 @@
 import 'package:flutter/material.dart';
+import 'package:foodapp/src/constants/icons.dart';
 
 import '../../../constants/colors.dart';
 import '../../../constants/imagePath.dart';
 
-
 class CustomBottomAppBar extends StatelessWidget {
-  final ValueNotifier<List<bool>> listSelect;
+  const CustomBottomAppBar({
+    required this.pageNumber,
+    required this.onPageChange,
+    super.key,
+  });
 
-  const CustomBottomAppBar({required this.listSelect,Key? key});
+  final int pageNumber;
+  final void Function(int value) onPageChange;
 
   @override
-  Widget build(BuildContext context) {
-    return BottomAppBar(
-      surfaceTintColor: Colors.white,
-      child: ValueListenableBuilder(
-        valueListenable: listSelect,
-        builder: (context, index, child) {
-          return Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              IconButton(
-                isSelected: listSelect.value[0],
-                onPressed: () {
-                  List<bool> temp = List.generate(4, (index) => false);
-                  temp[0] = true;
-                  listSelect.value = temp;
-                },
-                icon: Image(image: AssetImage(ImagePath.home)),
-                selectedIcon: Image(image: AssetImage(ImagePath.homeSelect)),
-              ),
-              IconButton(
-                isSelected: listSelect.value[1],
-                onPressed: () {
-                  List<bool> temp = List.generate(4, (index) => false);
-                  temp[1] = true;
-                  listSelect.value = temp;
-                },
-                icon: Image(image: AssetImage(ImagePath.search)),
-                selectedIcon: Image(image: AssetImage(ImagePath.searchSelect)),
-              ),
-              IconButton(
-                  style: IconButton.styleFrom(
-                    backgroundColor: ColorApp.cameraButton,
-                  ),
-                  onPressed: () {},
-                  icon: Image(image: AssetImage(ImagePath.camera))),
-              IconButton(
-                isSelected: listSelect.value[2],
-                onPressed: () {
-                  List<bool> temp = List.generate(4, (index) => false);
-                  temp[2] = true;
-                  listSelect.value = temp;
-                },
-                icon: Image(image: AssetImage(ImagePath.heart)),
-                selectedIcon: Image(image: AssetImage(ImagePath.heartSelect)),
-              ),
-              IconButton(
-                isSelected: listSelect.value[3],
-                onPressed: () {
-                  List<bool> temp = List.generate(4, (index) => false);
-                  temp[3] = true;
-                  listSelect.value = temp;
-                },
-                icon: Image(image: AssetImage(ImagePath.profile)),
-                selectedIcon: Image(image: AssetImage(ImagePath.profileSelect)),
-              ),
-            ],
-          );
-        },
-      ),
-    );
-  }
+  Widget build(BuildContext context) => BottomNavigationBar(
+        backgroundColor: Colors.white,
+        showUnselectedLabels: false,
+        elevation: 0,
+        landscapeLayout: BottomNavigationBarLandscapeLayout.linear,
+        type: BottomNavigationBarType.fixed,
+        currentIndex: pageNumber,
+        onTap: onPageChange,
+        showSelectedLabels: true,
+        items: const [
+          BottomNavigationBarItem(
+            icon: Image(image: AssetImage(ImagePath.home)),
+            activeIcon: Image(image: AssetImage(ImagePath.homeSelect)),
+            label: "",
+          ),
+          BottomNavigationBarItem(
+            icon: Image(image: AssetImage(ImagePath.search)),
+            activeIcon: Image(image: AssetImage(ImagePath.searchSelect)),
+            label: "",
+          ),
+          BottomNavigationBarItem(
+            icon: CircleAvatar(
+                backgroundColor: ColorApp.cameraButton,
+                child: Image(image: AssetImage(IconApp.scan))),
+            activeIcon: CircleAvatar(
+                backgroundColor: ColorApp.cameraButton,
+                child: Image(image: AssetImage(ImagePath.camera))),
+            label: "",
+          ),
+          BottomNavigationBarItem(
+            icon: Image(image: AssetImage(ImagePath.heart)),
+            activeIcon: Image(image: AssetImage(ImagePath.heartSelect)),
+            label: "",
+          ),
+          BottomNavigationBarItem(
+            icon: Image(image: AssetImage(ImagePath.profile)),
+            activeIcon: Image(image: AssetImage(ImagePath.profileSelect)),
+            label: "",
+          ),
+        ],
+      );
 }

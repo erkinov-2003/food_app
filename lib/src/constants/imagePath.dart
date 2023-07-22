@@ -20,4 +20,6 @@ class ImagePath {
   static const profile="assets/images/Profile.png";
   static const profileSelect="assets/images/ProfileSelect.png";
   static const camera="assets/images/Camera.png";
+
+  static const searchCancel="assets/images/CloseSquare.png";
 }
