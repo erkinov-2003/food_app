@@ -455,7 +455,7 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
           ),
-          ProfileScreen(),
+          const ProfileScreen(),
         ],
       ),
     );

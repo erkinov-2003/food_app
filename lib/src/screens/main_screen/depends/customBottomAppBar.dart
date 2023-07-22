@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:foodapp/src/constants/icons.dart';
+import 'package:foodapp/src/screens/photo_screen/photo_scanner.dart';
 
 import '../../../constants/colors.dart';
 import '../../../constants/imagePath.dart';
-import '../../profile_screen/profile_screen.dart';
 
 class CustomBottomAppBar extends StatelessWidget {
   const CustomBottomAppBar({
@@ -44,7 +44,7 @@ class CustomBottomAppBar extends StatelessWidget {
               selectedIcon: const CircleAvatar(
                   backgroundColor: ColorApp.cameraButton,
                   child: Image(image: AssetImage(ImagePath.camera))),
-              onPressed: () =>Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileScreen(),)),
+              onPressed: () =>Navigator.push(context, MaterialPageRoute(builder: (context) => const PhotoScreen(),)),
             ),
             label: "",
           ),
