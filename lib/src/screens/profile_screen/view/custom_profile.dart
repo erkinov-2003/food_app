@@ -22,7 +22,7 @@ class CustomProfile extends StatelessWidget {
           SizedBox(height: size.height * 0.010),
           const CustomListTile(
             text: "Renew Plans",
-            images: "assets/icons/star_icons.png",
+            images: "assets/icons/star_icon.png",
           ),
           SizedBox(height: size.height * 0.010),
           const CustomListTile(
