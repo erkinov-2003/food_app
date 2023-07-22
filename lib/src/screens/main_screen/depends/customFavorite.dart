@@ -29,7 +29,10 @@ class CustomFavorite extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image(image: AssetImage(imagePath)),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 8),
+                child: Image(image: AssetImage(imagePath)),
+              ),
               Text(
                 name,
                 style: TextStyle(
