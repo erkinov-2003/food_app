@@ -26,4 +26,8 @@ class ColorApp{
   static const favoriteText1Box=Color(0xFF4D0A00);
   static const favoriteText2Box=Color(0xFF1C3418);
   static const cameraButton=Color(0xFF91C788);
+
+  static const searchText=Color(0xFF0D0D0D);
+  static const searchColor=Color(0xFFF4F4F4);
+  static const searchCardColor=Color(0xFFFCFCFC);
 }

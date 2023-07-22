@@ -22,4 +22,6 @@ class ImagePath {
   static const camera="assets/images/Camera.png";
 
   static const searchCancel="assets/images/CloseSquare.png";
+  static const searchCardImage1="assets/images/Rectangle20.png";
+  static const searchCardImage2="assets/images/Rectangle22.png";
 }
