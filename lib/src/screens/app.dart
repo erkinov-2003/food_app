@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(useMaterial3: true),
       debugShowCheckedModeBanner: false,
-      home: const ProfileScreen(),
+      home: const SplashPage(),
     );
   }
 }
