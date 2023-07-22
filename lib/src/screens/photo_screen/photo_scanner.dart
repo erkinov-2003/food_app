@@ -31,12 +31,11 @@ class _MainScreenState extends State<PhotoScreen> {
     );
 
     await cameraController.initialize().then((value) {
-      if(!mounted) {
+      if (!mounted) {
         return;
       }
       setState(() {}); //To refresh widget
-    }).catchError((e) {
-    });
+    }).catchError((e) {});
   }
 
   @override
@@ -47,9 +46,9 @@ class _MainScreenState extends State<PhotoScreen> {
 
   @override
   Widget build(BuildContext context) {
-    if(cameraController.value.isInitialized) {
+    if (cameraController.value.isInitialized) {
       return Scaffold(
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.white,
         body: Stack(
           children: [
             CameraPreview(cameraController),
@@ -62,12 +61,20 @@ class _MainScreenState extends State<PhotoScreen> {
                     startCamera(direction);
                   });
                 },
-                child: button(Icons.flip_camera_ios_outlined, Alignment.bottomRight),
+                child: button(
+                  Icons.flip_camera_ios_outlined,
+                  Alignment.bottomRight,
+                ),
               ),
             ),
             GestureDetector(
               onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const ResultPage(),),);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const ResultPage(),
+                  ),
+                );
                 /*cameraController.takePicture().then((XFile? file) {
                   if(mounted) {
                     if(file != null) {
@@ -75,7 +82,23 @@ class _MainScreenState extends State<PhotoScreen> {
                   }
                 });*/
               },
-              child: button(Icons.camera_alt_outlined, Alignment.bottomCenter),
+              child: Align(
+                alignment: Alignment.bottomCenter,
+                child: FilledButton(
+                  style: FilledButton.styleFrom(
+                    backgroundColor: const Color(0xFFFFC0B7),
+                    fixedSize: const Size(85, 85),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(100),
+                    ),
+                  ),
+                  onPressed: (){},
+                  child: const CircleAvatar(
+                    radius: 100,
+                    backgroundColor: Color(0xFFFF8473),
+                  ),
+                ),
+              ),
             ),
           ],
         ),
@@ -115,7 +138,6 @@ class _MainScreenState extends State<PhotoScreen> {
       ),
     );
   }
-
 }
 
 class CameraService {
@@ -131,7 +153,7 @@ class CameraService {
   Future<CameraDescription> _getCameraDescription() async {
     List<CameraDescription> cameras = await availableCameras();
     return cameras.firstWhere((CameraDescription camera) =>
-    camera.lensDirection == CameraLensDirection.front);
+        camera.lensDirection == CameraLensDirection.front);
   }
 
   Future _setupCameraController({
@@ -157,7 +179,6 @@ void setupLocator() {
   locator.registerLazySingleton<CameraService>(() => CameraService());
 }
 
-
 class ResultPage extends StatefulWidget {
   const ResultPage({super.key});
 
@@ -168,7 +189,7 @@ class ResultPage extends StatefulWidget {
 class _ResultPageState extends State<ResultPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       backgroundColor: Colors.white,
     );
   }
