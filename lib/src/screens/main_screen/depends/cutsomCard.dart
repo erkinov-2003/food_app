@@ -44,7 +44,7 @@ class CustomCard extends StatelessWidget {
                 FilledButton(
                   style: FilledButton.styleFrom(
                     backgroundColor: ColorApp.cardButtonColor,
-                    minimumSize: Size(104, 32),
+                    minimumSize: const Size(104, 32),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
                     ),
@@ -70,7 +70,7 @@ class CustomCard extends StatelessWidget {
                 ),
               ],
             ),
-            Image(image: AssetImage(ImagePath.homeImage)),
+            const Image(image: AssetImage(ImagePath.homeImage)),
           ],
         ),
       ),

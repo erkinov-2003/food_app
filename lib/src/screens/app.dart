@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:foodapp/src/screens/profile_screen/profile_screen.dart';
 import 'main_screen/splashPage.dart';
 
 class MyApp extends StatelessWidget {
