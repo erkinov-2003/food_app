@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:get_it/get_it.dart';
 
-class MainScreen extends StatefulWidget {
-  const MainScreen({Key? key}) : super(key: key);
+class PhotoScreen extends StatefulWidget {
+  const PhotoScreen({Key? key}) : super(key: key);
 
   @override
-  State<MainScreen> createState() => _MainScreenState();
+  State<PhotoScreen> createState() => _MainScreenState();
 }
 
-class _MainScreenState extends State<MainScreen> {
+class _MainScreenState extends State<PhotoScreen> {
   late List<CameraDescription> cameras;
   late CameraController cameraController;
 
@@ -31,13 +31,11 @@ class _MainScreenState extends State<MainScreen> {
     );
 
     await cameraController.initialize().then((value) {
-      if(!mounted) {
+      if (!mounted) {
         return;
       }
       setState(() {}); //To refresh widget
-    }).catchError((e) {
-      print(e);
-    });
+    }).catchError((e) {});
   }
 
   @override
@@ -48,38 +46,57 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
-    if(cameraController.value.isInitialized) {
+    if (cameraController.value.isInitialized) {
       return Scaffold(
+        backgroundColor: Colors.white,
         body: Stack(
           children: [
             CameraPreview(cameraController),
-            GestureDetector(
-              onTap: () {
-                setState(() {
-                  direction = direction == 0 ? 1 : 0;
-                  startCamera(direction);
-                });
-              },
-              child: button(Icons.flip_camera_ios_outlined, Alignment.bottomLeft),
+            Padding(
+              padding: const EdgeInsets.only(right: 20),
+              child: GestureDetector(
+                onTap: () {
+                  setState(() {
+                    direction = direction == 0 ? 1 : 0;
+                    startCamera(direction);
+                  });
+                },
+                child: button(
+                  Icons.flip_camera_ios_outlined,
+                  Alignment.bottomRight,
+                ),
+              ),
             ),
             GestureDetector(
               onTap: () {
-                cameraController.takePicture().then((XFile? file) {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const ResultPage(),
+                  ),
+                );
+                /*cameraController.takePicture().then((XFile? file) {
                   if(mounted) {
                     if(file != null) {
-                      print("Picture saved to ${file.path}");
                     }
                   }
-                });
+                });*/
               },
-              child: button(Icons.camera_alt_outlined, Alignment.bottomCenter),
-            ),
-            Align(
-              alignment: AlignmentDirectional.topCenter,
-              child: Text(
-                "My Camera",
-                style: TextStyle(
-                  fontSize: 30,
+              child: Align(
+                alignment: Alignment.bottomCenter,
+                child: FilledButton(
+                  style: FilledButton.styleFrom(
+                    backgroundColor: const Color(0xFFFFC0B7),
+                    fixedSize: const Size(85, 85),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(100),
+                    ),
+                  ),
+                  onPressed: (){},
+                  child: const CircleAvatar(
+                    radius: 100,
+                    backgroundColor: Color(0xFFFF8473),
+                  ),
                 ),
               ),
             ),
@@ -121,7 +138,6 @@ class _MainScreenState extends State<MainScreen> {
       ),
     );
   }
-
 }
 
 class CameraService {
@@ -137,7 +153,7 @@ class CameraService {
   Future<CameraDescription> _getCameraDescription() async {
     List<CameraDescription> cameras = await availableCameras();
     return cameras.firstWhere((CameraDescription camera) =>
-    camera.lensDirection == CameraLensDirection.front);
+        camera.lensDirection == CameraLensDirection.front);
   }
 
   Future _setupCameraController({
@@ -161,4 +177,20 @@ final locator = GetIt.instance;
 
 void setupLocator() {
   locator.registerLazySingleton<CameraService>(() => CameraService());
+}
+
+class ResultPage extends StatefulWidget {
+  const ResultPage({super.key});
+
+  @override
+  State<ResultPage> createState() => _ResultPageState();
+}
+
+class _ResultPageState extends State<ResultPage> {
+  @override
+  Widget build(BuildContext context) {
+    return const Scaffold(
+      backgroundColor: Colors.white,
+    );
+  }
 }

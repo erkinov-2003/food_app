@@ -40,7 +40,7 @@ class _GetStartState extends State<GetStart> {
                         MaterialPageRoute(
                           builder: (context) => const HomePage(),
                         )),
-                    child: Text(
+                    child: const Text(
                       "Get Started",
                       style: TextStyle(
                         fontSize: 25,
