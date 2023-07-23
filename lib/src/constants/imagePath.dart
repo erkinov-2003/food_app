@@ -28,7 +28,18 @@ class ImagePath {
   static const profileSelect = "assets/images/ProfileSelect.png";
   static const camera = "assets/images/Camera.png";
 
-  static const searchCancel = "assets/images/CloseSquare.png";
-  static const searchCardImage1 = "assets/images/Rectangle20.png";
-  static const searchCardImage2 = "assets/images/Rectangle22.png";
+  static const searchCancel="assets/images/CloseSquare.png";
+  static const searchCardImage1="assets/images/Rectangle20.png";
+  static const searchCardImage2="assets/images/Rectangle22.png";
+  static const searchVektor="assets/images/Vector.png";
+
+  static const searchpizza="assets/images/pizza.png";
+  static const searchburger="assets/images/burger.png";
+  static const searchmeat="assets/images/meat.png";
+  static const searchpicheniye="assets/images/picheniye.png";
+  static const searchsalat="assets/images/salat.png";
+  static const searchshirinlik="assets/images/shirinliklar.png";
+  static const searchxotdog="assets/images/xotdog.png";
+  static const searchNot="assets/images/searchGroup.png";
+  static const plus = "assets/images/fluent_add-12-filled (1).png";
 }

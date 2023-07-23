@@ -34,45 +34,47 @@ class CustomGetStartPages extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        CarouselSlider.builder(
-          itemCount: customGetStartPageList.length,
-          itemBuilder: (BuildContext context, int index, int realIndex) {
-            return customGetStartPageList[index];
-          },
-          options: CarouselOptions(
-            initialPage: 0,
-            autoPlayCurve: Curves.linear,
-            height: 450,
-            enlargeCenterPage: true,
-            autoPlayInterval: const Duration(seconds: 2),
-            viewportFraction: 1,
-            onPageChanged: (index, reason) {
-              pageIndex.value = index;
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          CarouselSlider.builder(
+            itemCount: customGetStartPageList.length,
+            itemBuilder: (BuildContext context, int index, int realIndex) {
+              return customGetStartPageList[index];
             },
+            options: CarouselOptions(
+              initialPage: 0,
+              autoPlayCurve: Curves.linear,
+              height: 450,
+              enlargeCenterPage: true,
+              autoPlayInterval: const Duration(seconds: 2),
+              viewportFraction: 1,
+              onPageChanged: (index, reason) {
+                pageIndex.value = index;
+              },
+            ),
           ),
-        ),
-        SizedBox(
-          height: 30,
-          child: ValueListenableBuilder(
-              valueListenable: pageIndex,
-              builder: (context, index, child) {
-                return AnimatedSmoothIndicator(
-                  activeIndex: pageIndex.value,
-                  count: customGetStartPageList.length,
-                  effect:  const ExpandingDotsEffect(
-                    expansionFactor: 1.7,
-                    dotWidth: 12,
-                    dotHeight: 8,
-                    dotColor: ColorApp.cardIndicatorDotColor,
-                    activeDotColor: ColorApp.cardButtonColor,
-                  ),
-                );
-              }
+          SizedBox(
+            height: 30,
+            child: ValueListenableBuilder(
+                valueListenable: pageIndex,
+                builder: (context, index, child) {
+                  return AnimatedSmoothIndicator(
+                    activeIndex: pageIndex.value,
+                    count: customGetStartPageList.length,
+                    effect:  const ExpandingDotsEffect(
+                      expansionFactor: 1.7,
+                      dotWidth: 12,
+                      dotHeight: 8,
+                      dotColor: ColorApp.cardIndicatorDotColor,
+                      activeDotColor: ColorApp.cardButtonColor,
+                    ),
+                  );
+                }
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

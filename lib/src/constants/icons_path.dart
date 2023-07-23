@@ -7,4 +7,5 @@ class IconsPath {
   static const settingsIcon = AssetImage("assets/icons/settings_icon.png");
   static const fileIcons = AssetImage("assets/icons/file_icons.png");
   static const logOutIcons = AssetImage("assets/icons/log_out.png");
+  static const profileCrown = AssetImage("assets/icons/crown.png");
 }
