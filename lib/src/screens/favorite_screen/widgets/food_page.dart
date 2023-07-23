@@ -33,14 +33,6 @@ class FoodPage extends StatelessWidget {
         ),
         TextButton(
           onPressed: () {},
-          child: const Text(
-            "Search Food",
-            style: TextStyle(
-              fontSize: 22,
-              fontWeight: FontWeight.w600,
-              color: Colors.white,
-            ),
-          ),
           style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all(ColorApp.homeColor),
             fixedSize: MaterialStateProperty.all(const Size(290, 72)),
@@ -48,6 +40,14 @@ class FoodPage extends StatelessWidget {
               RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(24),
               ),
+            ),
+          ),
+          child: const  Text(
+            "Search Food",
+            style: TextStyle(
+              fontSize: 22,
+              fontWeight: FontWeight.w600,
+              color: Colors.white,
             ),
           ),
         ),

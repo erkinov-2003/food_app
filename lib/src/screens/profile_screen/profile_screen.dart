@@ -46,7 +46,7 @@ class ProfileScreen extends StatelessWidget {
                       ),
                       child: const Center(
                         child: Image(
-                          image: IconsPath.profileIcon,
+                          image: IconsPath.profileCrown,
                           width: 15,
                         ),
                       ),

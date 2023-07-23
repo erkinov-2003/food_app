@@ -4,8 +4,6 @@ import 'widgets/custom_text.dart';
 import 'widgets/food_page.dart';
 import 'widgets/recipes_page.dart';
 
-
-
 class FavoritesPage extends StatefulWidget {
   const FavoritesPage({Key? key}) : super(key: key);
 
@@ -25,7 +23,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:Colors.white,
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Center(
           child: Column(
@@ -39,7 +37,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
                 flex: 1,
                 child: Padding(
                   padding: const EdgeInsets.only(left: 40),
-                  child:Row(
+                  child: Row(
                     children: [
                       GestureDetector(
                         onTap: isCheck ? null : onPressed,
@@ -47,7 +45,9 @@ class _FavoritesPageState extends State<FavoritesPage> {
                           width: 156,
                           height: 60,
                           decoration: BoxDecoration(
-                            color: isCheck ? const Color(0xFFFF9385) : const Color(0xFFFFF8EE),
+                            color: isCheck
+                                ? const Color(0xFFFF9385)
+                                : const Color(0xFFFFF8EE),
                             borderRadius: const BorderRadius.horizontal(
                               left: Radius.circular(20),
                             ),
@@ -55,7 +55,9 @@ class _FavoritesPageState extends State<FavoritesPage> {
                           child: Center(
                             child: CustomText(
                               text: "Food",
-                              color: isCheck ? Colors.white : const Color(0xFFFF8473),
+                              color: isCheck
+                                  ? Colors.white
+                                  : const Color(0xFFFF8473),
                               fontSize: 16,
                             ),
                           ),
@@ -70,12 +72,16 @@ class _FavoritesPageState extends State<FavoritesPage> {
                             borderRadius: const BorderRadius.horizontal(
                               right: Radius.circular(20),
                             ),
-                            color: isCheck ? const Color(0xFFFFF8EE) : const Color(0xFFFF9385),
+                            color: isCheck
+                                ? const Color(0xFFFFF8EE)
+                                : const Color(0xFFFF9385),
                           ),
                           child: Center(
                             child: CustomText(
                               text: "Recipes",
-                              color: isCheck ? const Color(0xFFFF8473) : Colors.white,
+                              color: isCheck
+                                  ? const Color(0xFFFF8473)
+                                  : Colors.white,
                               fontSize: 16,
                             ),
                           ),
@@ -87,9 +93,9 @@ class _FavoritesPageState extends State<FavoritesPage> {
               ),
               Expanded(
                 flex: 4,
-                child:isCheck? FoodPage():const RecipesPage(),
+                child: isCheck ? FoodPage() : const RecipesPage(),
               ),
-              const SizedBox(height: 30,),
+              const SizedBox(height: 30),
             ],
           ),
         ),
