@@ -18,6 +18,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   ValueNotifier<int> pageNumber = ValueNotifier<int>(0);
+  ValueNotifier<bool> onTapSearch=ValueNotifier<bool>(false);
   late final PageController controller;
 
   @override
@@ -39,6 +40,7 @@ class _HomePageState extends State<HomePage> {
       curve: Curves.linear,
     );
       pageNumber.value = value;
+      onTapSearch.value=false;
   }
 
   @override
@@ -190,7 +192,7 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
           ),
-          const SearchPage(),
+          SearchPage(onTapSearch: onTapSearch),
           Padding(
             padding: const EdgeInsets.only(left: 28.0, right: 28, top: 98),
             child: Column(

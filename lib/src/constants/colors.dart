@@ -30,4 +30,8 @@ class ColorApp{
   static const searchText=Color(0xFF0D0D0D);
   static const searchColor=Color(0xFFF4F4F4);
   static const searchCardColor=Color(0xFFFCFCFC);
+  static const searchTrendingtext=Color(0xFFFF8473);
+  static const searchDeviderColor=Color(0xFFFCFCFC);
+  static const searchNotText1=Color(0xFF696969);
+  static const searchNotText2=Color(0xFFA9A9A9);
 }

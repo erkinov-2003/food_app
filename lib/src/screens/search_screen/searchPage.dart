@@ -1,177 +1,129 @@
 import 'package:flutter/material.dart';
 import 'package:foodapp/src/constants/colors.dart';
-import 'package:foodapp/src/constants/imagePath.dart';
+
+import 'depends/food.dart';
+import 'depends/foodsWidget.dart';
+import 'depends/searchFirstPage.dart';
+import 'depends/searchResultEmpty.dart';
 
 class SearchPage extends StatefulWidget {
-  const SearchPage({Key? key}) : super(key: key);
+  FocusNode focusNode = FocusNode();
+  final ValueNotifier<bool> onTapSearch;
+
+  SearchPage({required this.onTapSearch, Key? key});
 
   @override
   State<SearchPage> createState() => _SearchPageState();
 }
 
 class _SearchPageState extends State<SearchPage> {
+  ValueNotifier<List<Food>> foodList =
+      ValueNotifier<List<Food>>(<Food>[...foods]);
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        titleSpacing: 120,
-        leading: const BackButton(),
-        title: const Text(
-          "Search",
-          style: TextStyle(
-            fontWeight: FontWeight.w500,
-            fontSize: 20,
-            color: ColorApp.searchText,
-          ),
-        ),
-      ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(24),
-            child: TextField(
-              decoration: InputDecoration(
-                filled: true,
-                fillColor: ColorApp.searchColor,
-                hintText: "Search recipes, articles, people...",
-                prefixIcon: Icon(Icons.search),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(24),
-                  borderSide: BorderSide.none,
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(24),
-                  borderSide: BorderSide.none,
-                ),
-              ),
-            ),
-          ),
-          const Padding(
-            padding: EdgeInsets.only(left: 32),
-            child: Text(
-              "Hot Now",
-              style: TextStyle(
-                fontSize: 22,
-                fontWeight: FontWeight.w400,
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 24,top: 16),
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
+    return ValueListenableBuilder(
+        valueListenable: widget.onTapSearch,
+        builder: (context, value, child) {
+          return Scaffold(
+            resizeToAvoidBottomInset: false,
+            appBar: widget.onTapSearch.value
+                ? AppBar(
+                    titleSpacing: 120,
+                    leading: IconButton(
+                      onPressed: () => widget.onTapSearch.value = false,
+                      icon: Icon(Icons.arrow_back_sharp),
+                    ),
+                    title: const Text(
+                      "Search",
+                      style: TextStyle(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 20,
+                        color: ColorApp.searchText,
+                      ),
+                    ),
+                  )
+                : null,
+            body: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(right: 16),
-                    child: SizedBox(
-                      height: 231,
-                      width: 200,
-                      child: DecoratedBox(
-                        decoration: BoxDecoration(
-                          color: ColorApp.searchCardColor,
-                          borderRadius: BorderRadius.circular(16),
+                    padding: EdgeInsets.only(
+                        top: widget.onTapSearch.value ? 24 : 90,
+                        bottom: 24,
+                        left: 24,
+                        right: 24),
+                    child: TextField(
+                      focusNode: widget.focusNode,
+                      onTapOutside: (event) {
+                        widget.focusNode.unfocus();
+                      },
+                      onTap: () {
+                        widget.onTapSearch.value = true;
+                      },
+                      onChanged: searchFood,
+                      decoration: InputDecoration(
+                        filled: true,
+                        fillColor: ColorApp.searchColor,
+                        hintText: "Search recipes, articles, people...",
+                        prefixIcon: Icon(Icons.search),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(24),
+                          borderSide: BorderSide.none,
                         ),
-                        child: const Stack(
-                          children: [
-                            Image(
-                                image: AssetImage(ImagePath.searchCardImage1)),
-                            Align(
-                              alignment: Alignment.bottomCenter,
-                              child: SizedBox(
-                                height: 72,
-                                width: double.infinity,
-                                child: ColoredBox(
-                                  color: ColorApp.searchCardColor,
-                                  child: Padding(
-                                    padding: EdgeInsets.only(left: 12,top: 10),
-                                    child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          "The Pumkins Secrets",
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.w400,
-                                            fontSize: 14,
-                                            color: Colors.black,
-                                          ),
-                                        ),
-                                        Text(
-                                          "The Pumkins Secrets",
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.w300,
-                                            fontSize: 12,
-                                            color: Colors.black,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(24),
+                          borderSide: BorderSide.none,
                         ),
                       ),
                     ),
                   ),
-                  SizedBox(
-                    height: 231,
-                    width: 200,
-                    child: DecoratedBox(
-                      decoration: BoxDecoration(
-                        color: ColorApp.searchCardColor,
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                      child: const Stack(
-                        children: [
-                          Image(
-                              image: AssetImage(ImagePath.searchCardImage1)),
-                          Align(
-                            alignment: Alignment.bottomCenter,
-                            child: SizedBox(
-                              height: 72,
-                              width: double.infinity,
-                              child: ColoredBox(
-                                color: ColorApp.searchCardColor,
-                                child: Padding(
-                                  padding: EdgeInsets.only(left: 12,top: 10),
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                  !widget.onTapSearch.value
+                      ? const SearchFirstPage()
+                      : ValueListenableBuilder(
+                          valueListenable: foodList,
+                          builder: (context, value, child) {
+                            return foodList.value.isNotEmpty
+                                ? Column(
                                     children: [
-                                      Text(
-                                        "The Pumkins Secrets",
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.w400,
-                                          fontSize: 14,
-                                          color: Colors.black,
+                                      for (Food item in foodList.value)
+                                        ListTile(
+                                          leading: Image(
+                                            image: AssetImage(item.path),
+                                            fit: BoxFit.cover,
+                                            height: 35,
+                                            width: 35,
+                                          ),
+                                          title: Text(item.name),
+                                          onTap: () => Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    FoodsWidget(
+                                                  name: item.name,
+                                                  path: item.path,
+                                                ),
+                                              )),
                                         ),
-                                      ),
-                                      Text(
-                                        "The Pumkins Secrets",
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.w300,
-                                          fontSize: 12,
-                                          color: Colors.black,
-                                        ),
-                                      ),
                                     ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
+                                  )
+                                : const SearchResultEmpty();
+                          },
+                        ),
                 ],
               ),
             ),
-          ),
-        ],
-      ),
-    );
+          );
+        });
+  }
+
+  void searchFood(String query) {
+    final suggestions = foods
+        .where((element) =>
+            element.name.toLowerCase().startsWith(query.toLowerCase()))
+        .toList();
+
+    foodList.value = suggestions;
   }
 }
