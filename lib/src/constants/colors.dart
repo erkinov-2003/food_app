@@ -34,4 +34,7 @@ class ColorApp{
   static const searchDeviderColor=Color(0xFFFCFCFC);
   static const searchNotText1=Color(0xFF696969);
   static const searchNotText2=Color(0xFFA9A9A9);
+
+  static const favoriteCardColor = Color(0xFFEFF7EE);
+  static const foodButtonColor = Color(0xFFFFF8EB);
 }

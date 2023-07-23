@@ -35,4 +35,5 @@ class ImagePath {
   static const searchshirinlik="assets/images/shirinliklar.png";
   static const searchxotdog="assets/images/xotdog.png";
   static const searchNot="assets/images/searchGroup.png";
+  static const plus = "assets/images/fluent_add-12-filled (1).png";
 }
