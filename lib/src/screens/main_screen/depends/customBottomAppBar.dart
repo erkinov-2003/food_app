@@ -44,7 +44,12 @@ class CustomBottomAppBar extends StatelessWidget {
               selectedIcon: const CircleAvatar(
                   backgroundColor: ColorApp.cameraButton,
                   child: Image(image: AssetImage(ImagePath.camera))),
-              onPressed: () =>Navigator.push(context, MaterialPageRoute(builder: (context) => const PhotoScreen(),)),
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const PhotoScreen(),
+                ),
+              ),
             ),
             label: "",
           ),

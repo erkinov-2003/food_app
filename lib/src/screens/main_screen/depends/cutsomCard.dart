@@ -4,14 +4,14 @@ import '../../../constants/colors.dart';
 import '../../../constants/icons.dart';
 import '../../../constants/imagePath.dart';
 
-
 class CustomCard extends StatelessWidget {
   const CustomCard({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return SizedBox(
-      height: 169,
+      height: size.height * 0.222,
       width: double.infinity,
       child: DecoratedBox(
         decoration: BoxDecoration(
@@ -44,7 +44,10 @@ class CustomCard extends StatelessWidget {
                 FilledButton(
                   style: FilledButton.styleFrom(
                     backgroundColor: ColorApp.cardButtonColor,
-                    minimumSize: const Size(104, 32),
+                    minimumSize: Size(
+                      size.width * 0.288,
+                      size.height * 0.042,
+                    ),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
                     ),

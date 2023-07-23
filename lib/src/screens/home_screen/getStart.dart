@@ -13,10 +13,11 @@ class GetStart extends StatefulWidget {
 }
 
 class _GetStartState extends State<GetStart> {
-  ValueNotifier<int> pageIndex =ValueNotifier<int>(0);
+  ValueNotifier<int> pageIndex = ValueNotifier<int>(0);
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Scaffold(
       body: Center(
         child: Column(
@@ -36,10 +37,23 @@ class _GetStartState extends State<GetStart> {
                 children: [
                   TextButton(
                     onPressed: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const HomePage(),
-                        )),
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const HomePage(),
+                      ),
+                    ),
+                    style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all(ColorApp.homeColor),
+                      fixedSize: MaterialStateProperty.all(
+                        Size(size.width * 0.805, size.height * 0.094),
+                      ),
+                      shape: MaterialStateProperty.all(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(24),
+                        ),
+                      ),
+                    ),
                     child: const Text(
                       "Get Started",
                       style: TextStyle(
@@ -48,13 +62,6 @@ class _GetStartState extends State<GetStart> {
                         color: Colors.white,
                       ),
                     ),
-                    style: ButtonStyle(
-                        backgroundColor:
-                            MaterialStateProperty.all(ColorApp.homeColor),
-                        fixedSize:
-                            MaterialStateProperty.all(const Size(290, 72)),
-                        shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(24)))),
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 20),

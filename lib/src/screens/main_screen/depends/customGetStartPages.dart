@@ -34,6 +34,7 @@ class CustomGetStartPages extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -45,7 +46,7 @@ class CustomGetStartPages extends StatelessWidget {
             options: CarouselOptions(
               initialPage: 0,
               autoPlayCurve: Curves.linear,
-              height: 450,
+              height: size.height * 0.593,
               enlargeCenterPage: true,
               autoPlayInterval: const Duration(seconds: 2),
               viewportFraction: 1,
@@ -55,7 +56,7 @@ class CustomGetStartPages extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 30,
+            height: size.height * 0.039,
             child: ValueListenableBuilder(
                 valueListenable: pageIndex,
                 builder: (context, index, child) {

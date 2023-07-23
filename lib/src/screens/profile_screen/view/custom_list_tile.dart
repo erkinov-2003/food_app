@@ -7,10 +7,11 @@ class CustomListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return ListTile(
       leading: Container(
-        height: 40,
-        width: 40,
+        height: size.height * 0.052,
+        width: size.width * 0.111,
         decoration: const BoxDecoration(
           color: Color.fromARGB(255, 255, 248, 238),
           borderRadius: BorderRadius.all(

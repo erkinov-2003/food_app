@@ -13,12 +13,13 @@ class RecipesPage extends StatefulWidget {
 class _RecipesPageState extends State<RecipesPage> {
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Column(
       children: [
-         const SizedBox(
-          height: 125,
-          width: 340,
-          child: Card(
+        SizedBox(
+          height: size.height * 0.164,
+          width: size.width * 0.944,
+          child: const Card(
             color: ColorApp.favoriteCardColor,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -65,10 +66,10 @@ class _RecipesPageState extends State<RecipesPage> {
             ),
           ),
         ),
-        const SizedBox(
-          height: 125,
-          width: 340,
-          child: Card(
+        SizedBox(
+          height: size.height * 0.172,
+          width: size.width * 0.944,
+          child: const Card(
             color: ColorApp.favoriteCardColor,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -121,21 +122,23 @@ class _RecipesPageState extends State<RecipesPage> {
         ),
         TextButton(
           onPressed: () {},
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all(ColorApp.homeColor),
+            fixedSize: MaterialStateProperty.all(
+              Size(size.width * 0.805, size.height * 0.094),
+            ),
+            shape: MaterialStateProperty.all(
+              RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(24),
+              ),
+            ),
+          ),
           child: const Text(
             "Search Recipes",
             style: TextStyle(
               fontSize: 22,
               fontWeight: FontWeight.w600,
               color: Colors.white,
-            ),
-          ),
-          style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all(ColorApp.homeColor),
-            fixedSize: MaterialStateProperty.all(const Size(290, 72)),
-            shape: MaterialStateProperty.all(
-              RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(24),
-              ),
             ),
           ),
         ),

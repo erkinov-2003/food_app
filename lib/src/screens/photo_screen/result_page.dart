@@ -12,6 +12,7 @@ class ResultPage extends StatefulWidget {
 class _ResultPageState extends State<ResultPage> {
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.white,
       body: ListView(
@@ -42,7 +43,7 @@ class _ResultPageState extends State<ResultPage> {
             ),
           ),
           SizedBox(
-            height: 110,
+            height: size.height * 0.145,
             child: ColoredBox(
               color: const Color(0xFFFFF8EE),
               child: Row(

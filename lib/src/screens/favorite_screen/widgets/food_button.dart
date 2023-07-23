@@ -8,14 +8,14 @@ class FoodButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return FilledButton(
       onPressed: () {},
-      child: Image(
-        image: AssetImage(image),
-      ),
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all(ColorApp.foodButtonColor),
-        fixedSize: MaterialStateProperty.all(const Size(100, 100)),
+        fixedSize: MaterialStateProperty.all(
+          Size(size.width * 0.277, size.height * 0.131),
+        ),
         shape: MaterialStateProperty.all(
           const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(
@@ -23,6 +23,9 @@ class FoodButton extends StatelessWidget {
             ),
           ),
         ),
+      ),
+      child: Image(
+        image: AssetImage(image),
       ),
     );
   }

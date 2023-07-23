@@ -19,9 +19,13 @@ class _SplashPageState extends State<SplashPage> {
 
   void startPage() async {
     await Future.delayed(const Duration(milliseconds: 2000));
-    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const GetStart()));
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const GetStart(),
+      ),
+    );
   }
-
 
   @override
   Widget build(BuildContext context) {

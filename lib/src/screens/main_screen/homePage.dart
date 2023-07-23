@@ -19,7 +19,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   ValueNotifier<int> pageNumber = ValueNotifier<int>(0);
-  ValueNotifier<bool> onTapSearch=ValueNotifier<bool>(false);
+  ValueNotifier<bool> onTapSearch = ValueNotifier<bool>(false);
   late final PageController controller;
 
   @override
@@ -40,22 +40,22 @@ class _HomePageState extends State<HomePage> {
       duration: const Duration(milliseconds: 300),
       curve: Curves.linear,
     );
-      pageNumber.value = value;
-      onTapSearch.value=false;
+    pageNumber.value = value;
+    onTapSearch.value = false;
   }
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Scaffold(
       bottomNavigationBar: ValueListenableBuilder(
-        valueListenable: pageNumber,
-        builder: (context, value, child) {
-          return CustomBottomAppBar(
-            pageNumber: value,
-            onPageChange: pageChanger,
-          );
-        }
-      ),
+          valueListenable: pageNumber,
+          builder: (context, value, child) {
+            return CustomBottomAppBar(
+              pageNumber: value,
+              onPageChange: pageChanger,
+            );
+          }),
       body: PageView(
         physics: const NeverScrollableScrollPhysics(),
         allowImplicitScrolling: true,
@@ -63,7 +63,11 @@ class _HomePageState extends State<HomePage> {
         children: [
           SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.only(left: 28.0, right: 28, top: 98),
+              padding: EdgeInsets.only(
+                left: 28.0,
+                right: 28,
+                top: size.height * 0.129,
+              ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -93,7 +97,7 @@ class _HomePageState extends State<HomePage> {
                     child: CustomCarusel(),
                   ),
                   SizedBox(
-                    height: 88,
+                    height: size.height * 0.116,
                     width: double.infinity,
                     child: DecoratedBox(
                       decoration: BoxDecoration(

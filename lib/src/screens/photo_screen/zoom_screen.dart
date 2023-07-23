@@ -7,13 +7,14 @@ class ZoomScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    final size = MediaQuery.of(context).size;
+    return  Scaffold(
       backgroundColor: Colors.white,
       body: Center(
         child: SizedBox(
-          height: 500,
+          height: size.height * 0.659,
           width: double.infinity,
-          child: DecoratedBox(
+          child: const DecoratedBox(
             decoration: BoxDecoration(
               image: DecorationImage(
                 image: AssetImage(ImagePath.highres),

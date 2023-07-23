@@ -16,11 +16,12 @@ class CustomFavorite extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8),
       child: SizedBox(
-        height: 144,
-        width: 132,
+        height: size.height * 0.189,
+        width: size.width * 0.366,
         child: DecoratedBox(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(32),

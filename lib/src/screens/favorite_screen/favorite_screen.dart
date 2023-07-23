@@ -22,6 +22,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -36,14 +37,14 @@ class _FavoritesPageState extends State<FavoritesPage> {
               Expanded(
                 flex: 1,
                 child: Padding(
-                  padding: const EdgeInsets.only(left: 40),
+                  padding:  EdgeInsets.only(left: size.height * 0.052),
                   child: Row(
                     children: [
                       GestureDetector(
                         onTap: isCheck ? null : onPressed,
                         child: Container(
-                          width: 156,
-                          height: 60,
+                          width: size.width * 0.433,
+                          height: size.height * 0.079,
                           decoration: BoxDecoration(
                             color: isCheck
                                 ? const Color(0xFFFF9385)
@@ -66,8 +67,8 @@ class _FavoritesPageState extends State<FavoritesPage> {
                       GestureDetector(
                         onTap: isCheck ? onPressed : null,
                         child: Container(
-                          width: 156,
-                          height: 60,
+                          width: size.width * 0.433,
+                          height: size.height * 0.079,
                           decoration: BoxDecoration(
                             borderRadius: const BorderRadius.horizontal(
                               right: Radius.circular(20),
@@ -95,7 +96,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
                 flex: 4,
                 child: isCheck ? FoodPage() : const RecipesPage(),
               ),
-              const SizedBox(height: 30),
+               SizedBox(height: size.height * 0.039),
             ],
           ),
         ),

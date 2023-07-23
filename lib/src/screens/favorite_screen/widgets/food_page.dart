@@ -7,6 +7,7 @@ import '../../../constants/colors.dart';
 class FoodPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
@@ -18,7 +19,7 @@ class FoodPage extends StatelessWidget {
             FoodButton(image: ImagePath.searchpizza),
           ],
         ),
-        const SizedBox(height: 25),
+        SizedBox(height: size.height * 0.032),
         const Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
@@ -35,14 +36,16 @@ class FoodPage extends StatelessWidget {
           onPressed: () {},
           style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all(ColorApp.homeColor),
-            fixedSize: MaterialStateProperty.all(const Size(290, 72)),
+            fixedSize: MaterialStateProperty.all(
+              Size(size.width * 0.805, size.height * 0.094),
+            ),
             shape: MaterialStateProperty.all(
               RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(24),
               ),
             ),
           ),
-          child: const  Text(
+          child: const Text(
             "Search Food",
             style: TextStyle(
               fontSize: 22,

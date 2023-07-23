@@ -53,6 +53,7 @@ class _MainScreenState extends State<PhotoScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     if (!isCameraReady) {
       return const Scaffold(
         body: Center(
@@ -102,8 +103,8 @@ class _MainScreenState extends State<PhotoScreen> {
                   });
                 },
                 child: SizedBox(
-                  height: 50,
-                  width: 50,
+                  height: size.height * 0.065,
+                  width: size.width * 0.138,
                   child: DecoratedBox(
                     decoration: BoxDecoration(
                       shape: BoxShape.rectangle,
@@ -126,7 +127,10 @@ class _MainScreenState extends State<PhotoScreen> {
                 style: FilledButton.styleFrom(
                   backgroundColor: const Color(0xFFFFC0B7),
                   padding: const EdgeInsets.all(18),
-                  fixedSize: const Size(85, 85),
+                  fixedSize: Size(
+                    size.width * 0.236,
+                    size.height * 0.112,
+                  ),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(100),
                   ),
@@ -160,8 +164,8 @@ class _MainScreenState extends State<PhotoScreen> {
                   );
                 },
                 child: SizedBox(
-                  height: 50,
-                  width: 50,
+                  height: size.height * 0.065,
+                  width: size.width * 0.138,
                   child: DecoratedBox(
                     decoration: BoxDecoration(
                       shape: BoxShape.rectangle,

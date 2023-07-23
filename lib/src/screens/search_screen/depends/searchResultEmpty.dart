@@ -8,11 +8,12 @@ class SearchResultEmpty extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Align(
+    final size = MediaQuery.of(context).size;
+    return  Align(
       alignment: Alignment.center,
       child: Padding(
-        padding: EdgeInsets.only(top: 100),
-        child: Column(
+        padding: EdgeInsets.only(top: size.height * 0.131),
+        child: const Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Image(image: AssetImage(ImagePath.searchNot)),

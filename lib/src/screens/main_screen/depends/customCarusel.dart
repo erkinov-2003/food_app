@@ -23,6 +23,7 @@ class CustomCarusel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Column(
       children: [
         CarouselSlider.builder(
@@ -34,7 +35,7 @@ class CustomCarusel extends StatelessWidget {
             initialPage: 0,
             autoPlay: true,
             autoPlayCurve: Curves.linear,
-            height: 220,
+            height: size.height * 0.290,
             animateToClosest: true,
             enlargeCenterPage: true,
             enlargeStrategy: CenterPageEnlargeStrategy.scale,
@@ -46,7 +47,7 @@ class CustomCarusel extends StatelessWidget {
           ),
         ),
         SizedBox(
-          height: 30,
+          height: size.height * 0.039,
           child: ValueListenableBuilder(
               valueListenable: activeIndicator,
               builder: (context, index, child) {

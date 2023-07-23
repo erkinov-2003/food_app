@@ -8,12 +8,13 @@ class SearchFirstPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Padding(
-          padding: EdgeInsets.only(left: 32),
-          child: Text(
+         Padding(
+          padding: EdgeInsets.only(left: size.width * 0.088),
+          child: const Text(
             "Hot Now",
             style: TextStyle(
               fontSize: 22,
@@ -30,29 +31,30 @@ class SearchFirstPage extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(right: 16),
                   child: SizedBox(
-                    height: 231,
-                    width: 200,
+                    height: size.height * 0.304,
+                    width: size.width * 0.555,
                     child: DecoratedBox(
                       decoration: BoxDecoration(
                         color: ColorApp.searchCardColor,
                         borderRadius: BorderRadius.circular(16),
                       ),
-                      child: const Stack(
+                      child: Stack(
                         children: [
-                          Image(
-                              image: AssetImage(ImagePath.searchCardImage1)),
+                          const Image(
+                            image: AssetImage(ImagePath.searchCardImage1),
+                          ),
                           Align(
                             alignment: Alignment.bottomCenter,
                             child: SizedBox(
-                              height: 72,
+                              height: size.height * 0.094,
                               width: double.infinity,
-                              child: ColoredBox(
+                              child: const ColoredBox(
                                 color: ColorApp.searchCardColor,
                                 child: Padding(
                                   padding: EdgeInsets.only(left: 12, top: 10),
                                   child: Column(
                                     crossAxisAlignment:
-                                    CrossAxisAlignment.start,
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Text(
                                         "The Pumkins Secrets",
@@ -82,28 +84,27 @@ class SearchFirstPage extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: 231,
-                  width: 200,
+                  height: size.height * 0.304,
+                  width: size.width * 0.555,
                   child: DecoratedBox(
                     decoration: BoxDecoration(
                       color: ColorApp.searchCardColor,
                       borderRadius: BorderRadius.circular(16),
                     ),
-                    child: const Stack(
+                    child:  Stack(
                       children: [
-                        Image(image: AssetImage(ImagePath.searchCardImage1)),
+                        const Image(image: AssetImage(ImagePath.searchCardImage1)),
                         Align(
                           alignment: Alignment.bottomCenter,
                           child: SizedBox(
-                            height: 72,
+                            height: size.height * 0.094,
                             width: double.infinity,
-                            child: ColoredBox(
+                            child: const ColoredBox(
                               color: ColorApp.searchCardColor,
                               child: Padding(
                                 padding: EdgeInsets.only(left: 12, top: 10),
                                 child: Column(
-                                  crossAxisAlignment:
-                                  CrossAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
                                       "The Pumkins Secrets",
@@ -136,7 +137,7 @@ class SearchFirstPage extends StatelessWidget {
           ),
         ),
         const Padding(
-          padding:  EdgeInsets.symmetric(horizontal: 32),
+          padding: EdgeInsets.symmetric(horizontal: 32),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -149,7 +150,7 @@ class SearchFirstPage extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding:  EdgeInsets.only(top: 20, bottom: 10),
+                padding: EdgeInsets.only(top: 20, bottom: 10),
                 child: Row(
                   children: [
                     Text(
@@ -166,7 +167,7 @@ class SearchFirstPage extends StatelessWidget {
               ),
               Divider(color: ColorApp.searchDeviderColor),
               Padding(
-                padding:  EdgeInsets.symmetric(vertical: 8.0),
+                padding: EdgeInsets.symmetric(vertical: 8.0),
                 child: Row(
                   children: [
                     Text(
@@ -183,7 +184,7 @@ class SearchFirstPage extends StatelessWidget {
               ),
               Divider(color: ColorApp.searchDeviderColor),
               Padding(
-                padding:  EdgeInsets.symmetric(vertical: 8.0),
+                padding: EdgeInsets.symmetric(vertical: 8.0),
                 child: Row(
                   children: [
                     Text(
@@ -200,7 +201,7 @@ class SearchFirstPage extends StatelessWidget {
               ),
               Divider(color: ColorApp.searchDeviderColor),
               Padding(
-                padding:  EdgeInsets.symmetric(vertical: 8.0),
+                padding: EdgeInsets.symmetric(vertical: 8.0),
                 child: Row(
                   children: [
                     Text(
