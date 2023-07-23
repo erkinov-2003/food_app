@@ -1,5 +1,7 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
+import 'package:foodapp/src/constants/imagePath.dart';
 import 'package:get_it/get_it.dart';
 
 class PhotoScreen extends StatefulWidget {
@@ -52,47 +54,79 @@ class _MainScreenState extends State<PhotoScreen> {
         body: Stack(
           children: [
             CameraPreview(cameraController),
-            Padding(
-              padding: const EdgeInsets.only(right: 20),
-              child: GestureDetector(
-                onTap: () {
-                  setState(() {
-                    direction = direction == 0 ? 1 : 0;
-                    startCamera(direction);
-                  });
-                },
-                child: button(
-                  Icons.flip_camera_ios_outlined,
-                  Alignment.bottomRight,
+            const Align(
+              alignment: Alignment.topRight,
+              child: Padding(
+                padding: EdgeInsets.only(right: 20, top: 50),
+                child: Icon(
+                  Icons.flash_auto_rounded,
+                  color: Colors.white,
+                  size: 30,
                 ),
               ),
             ),
-            GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const ResultPage(),
+            Padding(
+              padding: const EdgeInsets.only(left: 20, top: 45),
+              child: IconButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                icon: const Icon(
+                  Icons.clear,
+                  color: Colors.white,
+                  size: 35,
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(right: 30, bottom: 70),
+              child: Align(
+                alignment: Alignment.bottomRight,
+                child: GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      direction = direction == 0 ? 1 : 0;
+                      startCamera(direction);
+                    });
+                  },
+                  child: SizedBox(
+                    height: 50,
+                    width: 50,
+                    child: DecoratedBox(
+                      decoration: BoxDecoration(
+                        shape: BoxShape.rectangle,
+                        borderRadius: BorderRadius.circular(12),
+                        color: const Color(0xFFFFF8EE),
+                      ),
+                      child: const Image(
+                        image: AssetImage(ImagePath.flip),
+                      ),
+                    ),
                   ),
-                );
-                /*cameraController.takePicture().then((XFile? file) {
-                  if(mounted) {
-                    if(file != null) {
-                    }
-                  }
-                });*/
-              },
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 50),
               child: Align(
                 alignment: Alignment.bottomCenter,
                 child: FilledButton(
                   style: FilledButton.styleFrom(
                     backgroundColor: const Color(0xFFFFC0B7),
+                    padding: const EdgeInsets.all(18),
                     fixedSize: const Size(85, 85),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(100),
                     ),
                   ),
-                  onPressed: (){},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const ResultPage(),
+                      ),
+                    );
+                  },
                   child: const CircleAvatar(
                     radius: 100,
                     backgroundColor: Color(0xFFFF8473),
@@ -100,43 +134,31 @@ class _MainScreenState extends State<PhotoScreen> {
                 ),
               ),
             ),
+            Padding(
+              padding: const EdgeInsets.only(left: 30, bottom: 70),
+              child: Align(
+                alignment: Alignment.bottomLeft,
+                child: SizedBox(
+                  height: 50,
+                  width: 50,
+                  child: DecoratedBox(
+                    decoration: BoxDecoration(
+                        shape: BoxShape.rectangle,
+                        borderRadius: BorderRadius.circular(15),
+                        image: const DecorationImage(
+                          image: AssetImage(ImagePath.cooking),
+                          fit: BoxFit.fill,
+                        )),
+                  ),
+                ),
+              ),
+            )
           ],
         ),
       );
     } else {
       return const SizedBox();
     }
-  }
-
-  Widget button(IconData icon, Alignment alignment) {
-    return Align(
-      alignment: alignment,
-      child: Container(
-        margin: const EdgeInsets.only(
-          left: 20,
-          bottom: 20,
-        ),
-        height: 50,
-        width: 50,
-        decoration: const BoxDecoration(
-          shape: BoxShape.circle,
-          color: Colors.white,
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black26,
-              offset: Offset(2, 2),
-              blurRadius: 10,
-            ),
-          ],
-        ),
-        child: Center(
-          child: Icon(
-            icon,
-            color: Colors.black54,
-          ),
-        ),
-      ),
-    );
   }
 }
 
@@ -189,8 +211,299 @@ class ResultPage extends StatefulWidget {
 class _ResultPageState extends State<ResultPage> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       backgroundColor: Colors.white,
+      body: ListView(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(left: 20, top: 10),
+            child: Align(
+              alignment: Alignment.topLeft,
+              child: IconButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                icon: const Icon(
+                  Icons.clear,
+                  color: Colors.black,
+                  size: 30,
+                ),
+              ),
+            ),
+          ),
+          const Padding(
+            padding: EdgeInsets.only(top: 20, bottom: 20),
+            child: Align(
+              alignment: Alignment.topCenter,
+              child: Image(
+                image: AssetImage(ImagePath.burgers),
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 110,
+            child: ColoredBox(
+              color: const Color(0xFFFFF8EE),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  RichText(
+                    text: const TextSpan(
+                      style: TextStyle(
+                        color: Color(0xFFFF8473),
+                        fontSize: 16,
+                        fontFamily: 'Nunito',
+                        fontWeight: FontWeight.w600,
+                        letterSpacing: -0.24,
+                      ),
+                      children: [
+                        TextSpan(text: "Protein\n"),
+                        TextSpan(
+                          text: "450g",
+                          style: TextStyle(
+                            fontSize: 24,
+                            fontFamily: 'Signika',
+                            fontWeight: FontWeight.w400,
+                            letterSpacing: -0.24,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  RichText(
+                    text: const TextSpan(
+                      style: TextStyle(
+                        color: Color(0xFFFF8473),
+                        fontSize: 16,
+                        fontFamily: 'Nunito',
+                        fontWeight: FontWeight.w600,
+                        letterSpacing: -0.24,
+                      ),
+                      children: [
+                        TextSpan(text: "Calories\n"),
+                        TextSpan(
+                          text: "220g",
+                          style: TextStyle(
+                            fontSize: 24,
+                            fontFamily: 'Signika',
+                            fontWeight: FontWeight.w400,
+                            letterSpacing: -0.24,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  RichText(
+                    text: const TextSpan(
+                      style: TextStyle(
+                        color: Color(0xFFFF8473),
+                        fontSize: 16,
+                        fontFamily: 'Nunito',
+                        fontWeight: FontWeight.w600,
+                        letterSpacing: -0.24,
+                      ),
+                      children: [
+                        TextSpan(text: "Fat\n"),
+                        TextSpan(
+                          text: "100g",
+                          style: TextStyle(
+                            fontSize: 24,
+                            fontFamily: 'Signika',
+                            fontWeight: FontWeight.w400,
+                            letterSpacing: -0.24,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  RichText(
+                    text: const TextSpan(
+                      style: TextStyle(
+                        color: Color(0xFFFF8473),
+                        fontSize: 16,
+                        fontFamily: 'Nunito',
+                        fontWeight: FontWeight.w600,
+                        letterSpacing: -0.24,
+                      ),
+                      children: [
+                        TextSpan(text: "Carbs\n"),
+                        TextSpan(
+                          text: "49g",
+                          style: TextStyle(
+                            fontSize: 24,
+                            fontFamily: 'Signika',
+                            fontWeight: FontWeight.w400,
+                            letterSpacing: -0.24,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          const Padding(
+            padding: EdgeInsets.only(left: 30, top: 25, bottom: 8),
+            child: Text(
+              "Details",
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 22,
+                fontFamily: 'Nunito',
+                fontWeight: FontWeight.w400,
+                letterSpacing: -0.24,
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 30, bottom: 16),
+            child: RichText(
+              text: const TextSpan(
+                style: TextStyle(
+                  color: Color(0xFFA8A8A8),
+                  fontSize: 16,
+                  fontFamily: 'Nunito',
+                  fontWeight: FontWeight.w400,
+                  letterSpacing: -0.24,
+                ),
+                children: [
+                  TextSpan(
+                    text:
+                        'A hamburger (also burger for short) is a\nsandwich consisting of one or more cooked\npatties of ground meat, usually beef, placed\ninside a sliced bread ',
+                  ),
+                  TextSpan(
+                    text: 'Read More...',
+                    style: TextStyle(
+                      color: Color(0xFF7BBC70),
+                      fontSize: 16,
+                      fontFamily: 'Nunito',
+                      fontWeight: FontWeight.w600,
+                      letterSpacing: -0.24,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          const Padding(
+            padding: EdgeInsets.only(left: 30, bottom: 16),
+            child: Text(
+              "Ingredients",
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 22,
+                fontFamily: 'Signika',
+                fontWeight: FontWeight.w400,
+                letterSpacing: -0.24,
+              ),
+            ),
+          ),
+          SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                SizedBox(
+                  height: 70,
+                  width: 70,
+                  child: DecoratedBox(
+                    decoration: BoxDecoration(
+                      color: const Color(0xFFFFF8EE),
+                      shape: BoxShape.rectangle,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: const Center(
+                      child: Image(
+                        image: AssetImage(ImagePath.bread),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 70,
+                  width: 70,
+                  child: DecoratedBox(
+                    decoration: BoxDecoration(
+                      color: const Color(0xFFFFF8EE),
+                      shape: BoxShape.rectangle,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: const Center(
+                      child: Image(
+                        image: AssetImage(ImagePath.tomato),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 70,
+                  width: 70,
+                  child: DecoratedBox(
+                    decoration: BoxDecoration(
+                      color: const Color(0xFFFFF8EE),
+                      shape: BoxShape.rectangle,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: const Center(
+                      child: Image(
+                        image: AssetImage(ImagePath.salad),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 70,
+                  width: 70,
+                  child: DecoratedBox(
+                    decoration: BoxDecoration(
+                      color: const Color(0xFFFFF8EE),
+                      shape: BoxShape.rectangle,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: const Center(
+                        child: Text(
+                      "View\n  All",
+                      style: TextStyle(
+                        color: Color(0xFFFF8473),
+                        fontSize: 12,
+                        fontFamily: 'Signika',
+                        fontWeight: FontWeight.w400,
+                        letterSpacing: -0.24,
+                      ),
+                    )),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 30, right: 30, top: 30),
+            child: FilledButton(
+              style: FilledButton.styleFrom(
+                backgroundColor: const Color(0xFF91C788),
+                fixedSize: const Size(290, 72),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(24),
+                ),
+              ),
+              onPressed: () {},
+              child: const Center(
+                child: Text(
+                  "Add To Favorites",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 25,
+                    fontFamily: 'Signika',
+                    fontWeight: FontWeight.w600,
+                    letterSpacing: 1.25,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

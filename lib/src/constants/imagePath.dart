@@ -10,7 +10,13 @@ class ImagePath {
   static const homeImageButton = "assets/images/Subtract.png";
   static const strawberry = "assets/images/Group9.png";
   static const favorite2 = "assets/images/Group.png";
-  static const cookies = "assets/images/cookies.png";
+
+  static const cooking = "assets/images/cooking.png";
+  static const burgers = "assets/images/burgers.png";
+  static const flip = "assets/images/red_circle.png";
+  static const bread = "assets/images/bread.png";
+  static const tomato = "assets/images/tomato.png";
+  static const salad = "assets/images/salad.png";
 
   static const home = "assets/images/Home.png";
   static const homeSelect = "assets/images/HomeSelect.png";
