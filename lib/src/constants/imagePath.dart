@@ -12,6 +12,7 @@ class ImagePath {
   static const favorite2 = "assets/images/Group.png";
 
   static const cooking = "assets/images/cooking.png";
+  static const highres = "assets/images/high_res.png";
   static const burgers = "assets/images/burgers.png";
   static const flip = "assets/images/red_circle.png";
   static const bread = "assets/images/bread.png";

@@ -10,11 +10,15 @@ class ZoomScreen extends StatelessWidget {
     return const Scaffold(
       backgroundColor: Colors.white,
       body: Center(
-        child: DecoratedBox(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage(ImagePath.cooking),
-              fit: BoxFit.fill,
+        child: SizedBox(
+          height: 500,
+          width: double.infinity,
+          child: DecoratedBox(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage(ImagePath.highres),
+                fit: BoxFit.fill,
+              ),
             ),
           ),
         ),
