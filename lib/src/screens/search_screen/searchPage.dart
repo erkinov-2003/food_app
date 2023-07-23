@@ -6,32 +6,27 @@ import 'depends/foodsWidget.dart';
 import 'depends/searchFirstPage.dart';
 import 'depends/searchResultEmpty.dart';
 
-class SearchPage extends StatefulWidget {
+class SearchPage extends StatelessWidget {
   FocusNode focusNode = FocusNode();
   final ValueNotifier<bool> onTapSearch;
 
   SearchPage({required this.onTapSearch, Key? key});
 
-  @override
-  State<SearchPage> createState() => _SearchPageState();
-}
-
-class _SearchPageState extends State<SearchPage> {
   ValueNotifier<List<Food>> foodList =
       ValueNotifier<List<Food>>(<Food>[...foods]);
 
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
-        valueListenable: widget.onTapSearch,
+        valueListenable: onTapSearch,
         builder: (context, value, child) {
           return Scaffold(
             resizeToAvoidBottomInset: false,
-            appBar: widget.onTapSearch.value
+            appBar: onTapSearch.value
                 ? AppBar(
                     titleSpacing: 120,
                     leading: IconButton(
-                      onPressed: () => widget.onTapSearch.value = false,
+                      onPressed: () => onTapSearch.value = false,
                       icon: Icon(Icons.arrow_back_sharp),
                     ),
                     title: const Text(
@@ -50,17 +45,17 @@ class _SearchPageState extends State<SearchPage> {
                 children: [
                   Padding(
                     padding: EdgeInsets.only(
-                        top: widget.onTapSearch.value ? 24 : 90,
+                        top: onTapSearch.value ? 24 : 90,
                         bottom: 24,
                         left: 24,
                         right: 24),
                     child: TextField(
-                      focusNode: widget.focusNode,
+                      focusNode: focusNode,
                       onTapOutside: (event) {
-                        widget.focusNode.unfocus();
+                        focusNode.unfocus();
                       },
                       onTap: () {
-                        widget.onTapSearch.value = true;
+                        onTapSearch.value = true;
                       },
                       onChanged: searchFood,
                       decoration: InputDecoration(
@@ -79,7 +74,7 @@ class _SearchPageState extends State<SearchPage> {
                       ),
                     ),
                   ),
-                  !widget.onTapSearch.value
+                  !onTapSearch.value
                       ? const SearchFirstPage()
                       : ValueListenableBuilder(
                           valueListenable: foodList,
