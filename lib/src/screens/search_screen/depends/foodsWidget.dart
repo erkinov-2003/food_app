@@ -13,7 +13,7 @@ class FoodsWidget extends StatelessWidget {
         leading: const BackButton(),
         title: Text(
           name,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 25,
             fontWeight: FontWeight.w700,
             color: Colors.black,
