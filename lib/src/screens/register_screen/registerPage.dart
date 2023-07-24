@@ -19,16 +19,16 @@ class _RegisterPageState extends State<RegisterPage> {
     if (value == null) {
       return "Emailda kamida bitta harf bo'lishi kerak";
     }
-    if (!RegExp(r'[A-z]+[@]').hasMatch(value!)) {
+    if (!RegExp(r'[A-z]+[@]').hasMatch(value!.trim())) {
       return "Email harflardan boshlanishi va @ belgisi bo'lishi shart";
     }
-    if (!RegExp(r'[A-z]+[@][A-z]').hasMatch(value)) {
+    if (!RegExp(r'[A-z]+[@][A-z]').hasMatch(value.trim())) {
       return "Emailda @ belgidan keyin kamida bitta harf bo'lishi kerak";
     }
     if (!value.contains(".com")) {
       return "Emailda '.com' bo'lishi shart";
     }
-    name=value;
+    name = value;
     return null;
   }
 
@@ -36,7 +36,7 @@ class _RegisterPageState extends State<RegisterPage> {
     if (value!.length <= 8) {
       return "Password kamida 8 ta belgi bo'lishi shart";
     }
-    password=value;
+    password = value;
     return null;
   }
 
@@ -47,11 +47,10 @@ class _RegisterPageState extends State<RegisterPage> {
     return null;
   }
 
-
   @override
   Widget build(BuildContext context) {
     final _formKey = GlobalKey<FormState>();
-
+    final size = MediaQuery.of(context).size;
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -65,15 +64,20 @@ class _RegisterPageState extends State<RegisterPage> {
                   Padding(
                     padding: const EdgeInsets.only(bottom: 20),
                     child: IconButton(
-                        onPressed: () => Navigator.pop(context),
-                        style: const ButtonStyle(
-                            minimumSize: MaterialStatePropertyAll<Size>(Size.fromRadius(25)),
-                            backgroundColor:
-                            MaterialStatePropertyAll<Color>(Color(0xFFF3F2F7))),
-                        icon: const Icon(
-                          Icons.chevron_left_rounded,
-                          color: Colors.black,
-                        )),
+                      onPressed: () => Navigator.pop(context),
+                      style: const ButtonStyle(
+                        minimumSize: MaterialStatePropertyAll<Size>(
+                          Size.fromRadius(25),
+                        ),
+                        backgroundColor: MaterialStatePropertyAll<Color>(
+                          Color(0xFFF3F2F7),
+                        ),
+                      ),
+                      icon: const Icon(
+                        Icons.chevron_left_rounded,
+                        color: Colors.black,
+                      ),
+                    ),
                   ),
                   RichText(
                     text: const TextSpan(
@@ -91,7 +95,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                   ),
                   const Padding(
-                    padding: const EdgeInsets.only(top: 20),
+                    padding: EdgeInsets.only(top: 20),
                     child: Text(
                       "quis nostrud exercitation ullamco laboris nisi ut",
                       style: TextStyle(
@@ -101,7 +105,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 50),
+                    padding: EdgeInsets.only(top: size.height * 0.065),
                     child: TextFeild(
                       name: "First name",
                       image: "assets/images/ProfileIcon.png",
@@ -128,28 +132,31 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 30),
+                    padding: EdgeInsets.symmetric(
+                      vertical: size.height * 0.039,
+                    ),
                     child: Center(
                       child: GestureDetector(
                         onTap: () {
                           if (_formKey.currentState!.validate()) {
                             Account(name: name!, password: password!);
                             Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => HomePage(),
-                                ));
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const HomePage(),
+                              ),
+                            );
                           }
                         },
                         child: DecoratedBox(
                           decoration: BoxDecoration(
-                            color: Color(0xFF8AC640),
+                            color: const Color(0xFF8AC640),
                             borderRadius: BorderRadius.circular(10),
                           ),
-                          child: const SizedBox(
-                            height: 63,
-                            width: 278,
-                            child: Center(
+                          child: SizedBox(
+                            height: size.height * 0.083,
+                            width: size.width * 0.772,
+                            child: const Center(
                               child: Text(
                                 "Register",
                                 style: TextStyle(

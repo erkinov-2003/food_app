@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class TextFeild extends StatefulWidget {
-  FocusNode focusNode=FocusNode();
   String name;
   String image;
   bool helper;
@@ -26,8 +25,6 @@ class _TextFieldState extends State<TextFeild> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      focusNode: widget.focusNode,
-      onTapOutside: (event) => widget.focusNode.unfocus(),
       obscureText: obscure && widget.helper,
       textInputAction: TextInputAction.next,
       validator: widget.validate,

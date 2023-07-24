@@ -50,9 +50,9 @@ class SearchPage extends StatelessWidget {
                       left: 24,
                       right: 24),
                   child: TextField(
-                    focusNode: focusNode,
+                    // focusNode: focusNode,
                     onTapOutside: (event) {
-                      focusNode.unfocus();
+                      // focusNode.unfocus();
                     },
                     onTap: () {
                       onTapSearch.value = true;

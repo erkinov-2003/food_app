@@ -30,7 +30,7 @@ class _SignInState extends State<SignIn> {
     if (!value.contains(".com")) {
       return "Emailda '.com' bo'lishi shart";
     }
-    if (!database.any((element) => element["name"]==value)) {
+    if (!database.any((element) => element["name"] == value)) {
       setState(() {
         validEmail = false;
         validText = "your email is incorrect";
@@ -48,7 +48,7 @@ class _SignInState extends State<SignIn> {
     if (value!.length <= 8) {
       return "Password kamida 8 ta belgi bo'lishi shart";
     }
-    if (!database.any((element) => element["password"]==value)) {
+    if (!database.any((element) => element["password"] == value)) {
       setState(() {
         validPAssword = false;
         validText = "your password is incorrect";
@@ -64,6 +64,7 @@ class _SignInState extends State<SignIn> {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     final _formKey = GlobalKey<FormState>();
 
     return Scaffold(
@@ -100,9 +101,10 @@ class _SignInState extends State<SignIn> {
                     child: Text(
                       "quis nostrud exercitation ullamco laboris nisi ut",
                       style: TextStyle(
-                          fontWeight: FontWeight.w400,
-                          fontSize: 12,
-                          color: Color(0xFF52577A)),
+                        fontWeight: FontWeight.w400,
+                        fontSize: 12,
+                        color: Color(0xFF52577A),
+                      ),
                     ),
                   )
                 ],
@@ -118,7 +120,7 @@ class _SignInState extends State<SignIn> {
                         ? Padding(
                             padding: const EdgeInsets.only(bottom: 20),
                             child: SizedBox(
-                              height: 50,
+                              height: size.height * 0.065,
                               width: double.infinity,
                               child: DecoratedBox(
                                 decoration: BoxDecoration(
@@ -162,10 +164,11 @@ class _SignInState extends State<SignIn> {
                               validEmail &&
                               validPAssword) {
                             Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => HomePage(),
-                                ));
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const HomePage(),
+                              ),
+                            );
                           }
                         },
                         child: DecoratedBox(
@@ -173,10 +176,10 @@ class _SignInState extends State<SignIn> {
                             color: const Color(0xFF8AC640),
                             borderRadius: BorderRadius.circular(10),
                           ),
-                          child: const SizedBox(
-                            height: 63,
-                            width: 278,
-                            child: Center(
+                          child: SizedBox(
+                            height: size.height * 0.083,
+                            width: size.width * 0.772,
+                            child: const Center(
                               child: Text(
                                 "Login",
                                 style: TextStyle(
