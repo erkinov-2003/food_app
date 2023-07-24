@@ -3,7 +3,8 @@ import '../../constants/imagePath.dart';
 import '../../constants/colors.dart';
 
 import '../main_screen/depends/customGetStartPages.dart';
-import '../main_screen/homePage.dart';
+import '../register_screen/registerPage.dart';
+import '../register_screen/signIn.dart';
 
 class GetStart extends StatefulWidget {
   const GetStart({Key? key}) : super(key: key);
@@ -39,7 +40,7 @@ class _GetStartState extends State<GetStart> {
                     onPressed: () => Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const HomePage(),
+                        builder: (context) => const SignIn(),
                       ),
                     ),
                     style: ButtonStyle(
@@ -75,12 +76,19 @@ class _GetStartState extends State<GetStart> {
                         children: [
                           const TextSpan(text: "Already Have An Acount? "),
                           TextSpan(
-                            text: "Log In",
+                            text: "Register",
                             style: const TextStyle(
                               fontWeight: FontWeight.w600,
                               color: ColorApp.richText2,
                             ),
-                            onEnter: (event) {},
+                            onEnter: (event) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const RegisterPage(),
+                                ),
+                              );
+                            },
                           ),
                         ],
                       ),
