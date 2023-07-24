@@ -46,7 +46,7 @@ class CustomGetStartPages extends StatelessWidget {
             options: CarouselOptions(
               initialPage: 0,
               autoPlayCurve: Curves.linear,
-              height: size.height * 0.593,
+              height: size.height * 0.555,
               enlargeCenterPage: true,
               autoPlayInterval: const Duration(seconds: 2),
               viewportFraction: 1,
@@ -56,7 +56,7 @@ class CustomGetStartPages extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: size.height * 0.039,
+            height: size.height * 0.005,
             child: ValueListenableBuilder(
                 valueListenable: pageIndex,
                 builder: (context, index, child) {
