@@ -15,6 +15,8 @@ class ProfileScreen extends StatelessWidget {
         backgroundColor: Colors.white,
         elevation: 0,
         centerTitle: true,
+        leading:
+            IconButton(onPressed: () {}, icon: Icon(Icons.arrow_back_outlined)),
         title: const Text(
           "Profile",
           style: TextStyle(
