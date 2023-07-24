@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../constants/imagePath.dart';
+import '../favorite_screen/favorite_screen.dart';
 
 class ResultPage extends StatefulWidget {
   const ResultPage({super.key});
@@ -284,7 +285,9 @@ class _ResultPageState extends State<ResultPage> {
                   borderRadius: BorderRadius.circular(24),
                 ),
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const FavoritesPage(),),);
+              },
               child: const Center(
                 child: Text(
                   "Add To Favorites",
