@@ -75,6 +75,7 @@ class _SignInState extends State<SignIn> {
             const Image(
               image: AssetImage("assets/images/Eatinghealthyfood-cuate1.png"),
               width: double.infinity,
+              height: 300,
             ),
             Padding(
               padding: const EdgeInsets.only(left: 29),
@@ -84,9 +85,10 @@ class _SignInState extends State<SignIn> {
                   RichText(
                     text: const TextSpan(
                       style: TextStyle(
-                          fontSize: 25,
-                          fontWeight: FontWeight.w500,
-                          color: Color(0xFF1F4B6B)),
+                        fontSize: 25,
+                        fontWeight: FontWeight.w500,
+                        color: Color(0xFF1F4B6B),
+                      ),
                       children: [
                         TextSpan(text: "Let's "),
                         TextSpan(
