@@ -35,7 +35,7 @@ class CustomCarusel extends StatelessWidget {
             initialPage: 0,
             autoPlay: true,
             autoPlayCurve: Curves.linear,
-            height: size.height * 0.290,
+            height: size.height * 0.250,
             animateToClosest: true,
             enlargeCenterPage: true,
             enlargeStrategy: CenterPageEnlargeStrategy.scale,
